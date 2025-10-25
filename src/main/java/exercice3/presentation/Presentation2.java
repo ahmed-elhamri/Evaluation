@@ -23,7 +23,7 @@ public class Presentation2 {
         IFemmeDao femmeService = context.getBean("femmeService", IFemmeDao.class);
         IMariageDao mariageService = context.getBean("mariageService", IMariageDao.class);
 
-
+        /*
         // ---- Homme ----
         Homme h1 = new Homme();
         h1.setNom("Amrani");
@@ -192,6 +192,7 @@ public class Presentation2 {
         m5.setId(new MariageId(h5.getId(), f5.getId()));
         mariageService.create(m5);
 
+        */
 
 //        System.out.println("\n==== La liste des femmes ====");
 //        for (Femme femme : femmeService.findAll()) {
@@ -201,7 +202,7 @@ public class Presentation2 {
 //        System.out.println("\n==== La femme la plus âgée ====");
 //        System.out.println(femmeService.findFemmeLaPlusAgee());
 //
-//        Homme homme = hommeService.findById(1);
+        Homme homme = hommeService.findById(1);
 //        System.out.println("=\n==== Les épouses de : " + homme.getNom() + " =====");
 //        for (Femme femme : hommeService.findEpouses(homme.getId())) {
 //            System.out.println(femme);
@@ -222,16 +223,17 @@ public class Presentation2 {
 //            System.out.println(h);
 //        }
 //
-//        System.out.println("\n==== Les mariages d’un homme avec tous les détails ====");
-//        System.out.println("Nom: " + homme.getNom() + " " + homme.getPrenom());
-//        System.out.println("Mariages En Cours :");
-//        for (Object[] obj: hommeService.findMariagesDetails(homme.getId())) {
-//            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Nombre d'enfants: " + obj[3]);
-//        }
-//        System.out.println("Mariages échoués :");
-//        for (Object[] obj: hommeService.findMariagesEchoues(homme.getId())) {
-//            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Date Fin: " + obj[3] + "\t Nombre d'enfants: " + obj[4]);
-//        }
+        // Exemple d'affichage
+        System.out.println("\n==== Les mariages d’un homme avec tous les détails ====");
+        System.out.println("Nom: " + homme.getNom() + " " + homme.getPrenom());
+        System.out.println("Mariages En Cours :");
+        for (Object[] obj: hommeService.findMariagesDetails(homme.getId())) {
+            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Nombre d'enfants: " + obj[3]);
+        }
+        System.out.println("Mariages échoués :");
+        for (Object[] obj: hommeService.findMariagesEchoues(homme.getId())) {
+            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Date Fin: " + obj[3] + "\t Nombre d'enfants: " + obj[4]);
+        }
 
     }
 }
