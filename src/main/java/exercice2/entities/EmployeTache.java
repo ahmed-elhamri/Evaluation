@@ -1,31 +1,36 @@
 package exercice2.entities;
 
+import exercice1.entities.LigneCommandeProduitId;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class EmployeTache {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
+    @EmbeddedId
+    private EmployeTacheId id;
     private Date dateDebutReelle;
     private Date dateFinReelle;
 
+    @MapsId("employeId")
     @ManyToOne
-    @JoinColumn(name="employe_id")
+    @JoinColumn(name = "employe_id")
     private Employe employe;
 
+    @MapsId("tacheId")
     @ManyToOne
-    @JoinColumn(name="tache_id")
+    @JoinColumn(name = "tache_id")
     private Tache tache;
 
     public EmployeTache() {
     }
 
-    public int getId() {
+    public EmployeTacheId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(EmployeTacheId id) {
         this.id = id;
     }
 

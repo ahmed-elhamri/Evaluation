@@ -1,5 +1,8 @@
 package exercice1.dao;
 
+import exercice1.entities.LigneCommandeProduit;
+import exercice1.entities.LigneCommandeProduitId;
+
 import java.util.List;
 
 public interface IDao<T> {

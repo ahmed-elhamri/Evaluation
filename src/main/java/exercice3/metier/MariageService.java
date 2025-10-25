@@ -1,7 +1,9 @@
 package exercice3.metier;
 
 import exercice3.dao.IDao;
+import exercice3.dao.IMariageDao;
 import exercice3.entities.Mariage;
+import exercice3.entities.MariageId;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +13,7 @@ import java.util.List;
 
 @Service("mariageService")
 @Transactional
-public class MariageService implements IDao<Mariage> {
-
+public class MariageService implements  IMariageDao{
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -35,8 +36,12 @@ public class MariageService implements IDao<Mariage> {
     }
 
     @Override
-    public Mariage findById(int id) {
+    public Mariage findById(MariageId id) {
         return sessionFactory.getCurrentSession().get(Mariage.class, id);
+    }
+    @Override
+    public Mariage findById(int id) {
+        return null;
     }
 
     @Override

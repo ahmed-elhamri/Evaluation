@@ -1,7 +1,9 @@
 package exercice1.metier;
 
 import exercice1.dao.IDao;
+import exercice1.dao.ILigneCommandeProduiDao;
 import exercice1.entities.LigneCommandeProduit;
+import exercice1.entities.LigneCommandeProduitId;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class LigneCommandeProduitDaoImpl implements IDao<LigneCommandeProduit> {
+public class LigneCommandeProduitDaoImpl implements ILigneCommandeProduiDao {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -34,9 +36,17 @@ public class LigneCommandeProduitDaoImpl implements IDao<LigneCommandeProduit> {
     }
 
     @Override
-    public LigneCommandeProduit findById(int id) {
+    public LigneCommandeProduit findById(LigneCommandeProduitId id) {
         return sessionFactory.getCurrentSession().get(LigneCommandeProduit.class, id);
     }
+
+    @Override
+    public LigneCommandeProduit findById(int id) {
+        return null;
+    }
+
+
+
 
     @Override
     public List<LigneCommandeProduit> findAll() {

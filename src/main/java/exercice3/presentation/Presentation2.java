@@ -3,9 +3,11 @@ package exercice3.presentation;
 import exercice3.dao.IDao;
 import exercice3.dao.IFemmeDao;
 import exercice3.dao.IHommeDao;
+import exercice3.dao.IMariageDao;
 import exercice3.entities.Femme;
 import exercice3.entities.Homme;
 import exercice3.entities.Mariage;
+import exercice3.entities.MariageId;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import util.HibernateConfig;
@@ -19,9 +21,9 @@ public class Presentation2 {
 
         IHommeDao hommeService = context.getBean("hommeService", IHommeDao.class);
         IFemmeDao femmeService = context.getBean("femmeService", IFemmeDao.class);
-        IDao<Mariage> mariageService = context.getBean("mariageService", IDao.class);
+        IMariageDao mariageService = context.getBean("mariageService", IMariageDao.class);
 
-        /*
+
         // ---- Homme ----
         Homme h1 = new Homme();
         h1.setNom("Amrani");
@@ -151,6 +153,7 @@ public class Presentation2 {
         m1.setHomme(h1);
         m1.setFemme(f1);
         m1.setNbrEnfant(2);
+        m1.setId(new MariageId(h1.getId(), f1.getId()));
         mariageService.create(m1);
 
         Mariage m2 = new Mariage();
@@ -159,6 +162,7 @@ public class Presentation2 {
         m2.setHomme(h2);
         m2.setFemme(f2);
         m2.setNbrEnfant(1);
+        m2.setId(new MariageId(h2.getId(), f2.getId()));
         mariageService.create(m2);
 
         Mariage m3 = new Mariage();
@@ -167,6 +171,7 @@ public class Presentation2 {
         m3.setHomme(h3);
         m3.setFemme(f3);
         m3.setNbrEnfant(2);
+        m3.setId(new MariageId(h3.getId(), f3.getId()));
         mariageService.create(m3);
 
         Mariage m4 = new Mariage();
@@ -175,6 +180,7 @@ public class Presentation2 {
         m4.setHomme(h4);
         m4.setFemme(f4);
         m4.setNbrEnfant(1);
+        m4.setId(new MariageId(h4.getId(), f4.getId()));
         mariageService.create(m4);
 
         Mariage m5 = new Mariage();
@@ -183,48 +189,49 @@ public class Presentation2 {
         m5.setHomme(h5);
         m5.setFemme(f5);
         m5.setNbrEnfant(2);
+        m5.setId(new MariageId(h5.getId(), f5.getId()));
         mariageService.create(m5);
-        */
-
-        System.out.println("==== La liste des femmes ====");
-        for (Femme femme : femmeService.findAll()) {
-            System.out.println(femme);
-        }
-
-        System.out.println("==== La femme la plus âgée ====");
-        System.out.println(femmeService.findFemmeLaPlusAgee());
-
-        Homme homme = hommeService.findById(1);
-        System.out.println("===== Les épouses de : " + homme.getNom() + " =====");
-        for (Femme femme : hommeService.findEpouses(homme.getId())) {
-            System.out.println(femme);
-        }
-
-        Femme f = femmeService.findById(6);
-        System.out.println("==== Le nombre d’enfants de " + f.getNom() + " entre deux dates ====");
-        System.out.println(femmeService.countEnfantsEntreDates(f.getId(), new Date(110, 0, 1), new Date(126, 0, 1)));
-
-        System.out.println("====  Les femmes mariées deux fois ou plus =====");
-        for (Femme femme : femmeService.findFemmesMarieesDeuxFois()) {
-            System.out.println(femme);
-        }
 
 
-        System.out.println("==== Les hommes mariés à quatre femmes entre deux dates ====");
-        for (Homme h : hommeService.countHommesMarieQuatreFemmesEntreDates(new Date(110, 0, 1), new Date(126, 0, 1))){
-            System.out.println(h);
-        }
-
-        System.out.println("==== Les mariages d’un homme avec tous les détails ====");
-        System.out.println("Nom: " + homme.getNom() + " " + homme.getPrenom());
-        System.out.println("Mariages En Cours :");
-        for (Object[] obj: hommeService.findMariagesDetails(homme.getId())) {
-            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Nombre d'enfants: " + obj[3]);
-        }
-        System.out.println("Mariages échoués :");
-        for (Object[] obj: hommeService.findMariagesEchoues(homme.getId())) {
-            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Date Fin: " + obj[3] + "\t Nombre d'enfants: " + obj[4]);
-        }
+//        System.out.println("\n==== La liste des femmes ====");
+//        for (Femme femme : femmeService.findAll()) {
+//            System.out.println(femme);
+//        }
+//
+//        System.out.println("\n==== La femme la plus âgée ====");
+//        System.out.println(femmeService.findFemmeLaPlusAgee());
+//
+//        Homme homme = hommeService.findById(1);
+//        System.out.println("=\n==== Les épouses de : " + homme.getNom() + " =====");
+//        for (Femme femme : hommeService.findEpouses(homme.getId())) {
+//            System.out.println(femme);
+//        }
+//
+//        Femme f = femmeService.findById(6);
+//        System.out.println("\n==== Le nombre d’enfants de " + f.getNom() + " entre deux dates ====");
+//        System.out.println(femmeService.countEnfantsEntreDates(f.getId(), new Date(110, 0, 1), new Date(126, 0, 1)));
+//
+//        System.out.println("\n====  Les femmes mariées deux fois ou plus =====");
+//        for (Femme femme : femmeService.findFemmesMarieesDeuxFois()) {
+//            System.out.println(femme);
+//        }
+//
+//
+//        System.out.println("\n==== Les hommes mariés à quatre femmes entre deux dates ====");
+//        for (Homme h : hommeService.countHommesMarieQuatreFemmesEntreDates(new Date(110, 0, 1), new Date(126, 0, 1))){
+//            System.out.println(h);
+//        }
+//
+//        System.out.println("\n==== Les mariages d’un homme avec tous les détails ====");
+//        System.out.println("Nom: " + homme.getNom() + " " + homme.getPrenom());
+//        System.out.println("Mariages En Cours :");
+//        for (Object[] obj: hommeService.findMariagesDetails(homme.getId())) {
+//            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Nombre d'enfants: " + obj[3]);
+//        }
+//        System.out.println("Mariages échoués :");
+//        for (Object[] obj: hommeService.findMariagesEchoues(homme.getId())) {
+//            System.out.println("Femme: " + obj[0] + " " + obj[1] + "\t Date Debut: " + obj[2] + "\t Date Fin: " + obj[3] + "\t Nombre d'enfants: " + obj[4]);
+//        }
 
     }
 }

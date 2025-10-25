@@ -6,28 +6,31 @@ import java.util.List;
 
 @Entity
 public class Mariage {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @EmbeddedId
+    private MariageId id;
+
     private Date dateDebut;
     private Date dateFin;
     private int nbrEnfant;
 
+    @MapsId("hommeId")
     @ManyToOne
-    @JoinColumn(name="homme_id")
+    @JoinColumn(name = "homme_id")
     private Homme homme;
 
+    @MapsId("femmeId")
     @ManyToOne
-    @JoinColumn(name="femme_id")
+    @JoinColumn(name = "femme_id")
     private Femme femme;
 
     public Mariage() {
     }
 
-    public int getId() {
+    public MariageId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(MariageId id) {
         this.id = id;
     }
 

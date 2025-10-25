@@ -1,7 +1,11 @@
 package exercice2.metier;
 
 import exercice1.dao.IDao;
+import exercice1.entities.LigneCommandeProduit;
+import exercice1.entities.LigneCommandeProduitId;
+import exercice2.dao.IEmployeTacheDao;
 import exercice2.entities.EmployeTache;
+import exercice2.entities.EmployeTacheId;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +16,7 @@ import java.util.List;
 
 @Service("employeTacheService")
 @Transactional
-public class EmployeTacheService implements IDao<EmployeTache> {
+public class EmployeTacheService implements IEmployeTacheDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -36,8 +40,13 @@ public class EmployeTacheService implements IDao<EmployeTache> {
     }
 
     @Override
-    public EmployeTache findById(int id) {
+    public EmployeTache findById(EmployeTacheId id) {
         return sessionFactory.getCurrentSession().get(EmployeTache.class, id);
+    }
+
+    @Override
+    public EmployeTache findById(int id) {
+        return null;
     }
 
     @Override
