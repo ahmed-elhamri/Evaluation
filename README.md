@@ -1,20 +1,23 @@
 # Exercice 1
 ## Base de donnees 
-<img width="1086" height="604" alt="image" src="https://github.com/user-attachments/assets/4bc8d4b3-0f5f-4fbb-8b12-6b295e2ea640" />
+<img width="1036" height="646" alt="image" src="https://github.com/user-attachments/assets/b0a99815-0cb9-4b97-866b-e8964c4cb728" />
+
 
 ## Exemple d’affichage
 <img width="350" height="174" alt="image" src="https://github.com/user-attachments/assets/85453324-25d0-4d93-bb6b-1469f3df7c20" />
 
 # Exercice 2
 ## Base de donnees
-<img width="929" height="701" alt="image" src="https://github.com/user-attachments/assets/45d0bb10-c4cf-4471-b875-8c73df850e96" />
+<img width="705" height="611" alt="image" src="https://github.com/user-attachments/assets/114c57bf-1fdf-45ea-abad-dcfbae038572" />
+
 
 ## Exemple d’affichage
 <img width="852" height="149" alt="image" src="https://github.com/user-attachments/assets/28cbdc55-e91c-4dd5-aecc-e45bc09b1b23" />
 
 # Exercice 3 
 ## Base de donnees
-<img width="751" height="403" alt="image" src="https://github.com/user-attachments/assets/80d4d0e7-e72c-4198-a690-2744f6e95ed3" />
+<img width="665" height="338" alt="image" src="https://github.com/user-attachments/assets/813e2a34-1998-406c-bb97-800f1198c62b" />
+
 
 ## Exemple d’affichage
 <img width="1223" height="678" alt="image" src="https://github.com/user-attachments/assets/c9fcf114-cdd3-4d32-a2c1-cfcfa2ff8bb5" />
